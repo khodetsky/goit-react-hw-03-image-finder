@@ -36,7 +36,6 @@ export class App extends Component {
     const selectImage = this.state.images.find(image => image.webformatURL === e.target.src)
     this.setState({ currentImage: selectImage })
     this.toggleModal();
-    // console.log(e.currentTarget);
   }
 
   loadMore = () => {
@@ -49,21 +48,23 @@ export class App extends Component {
   }
 
   render() {
+    const {status, images, currentImage } = this.state;
+
     return (
     <>
         <Searchbar onSubmit={this.onFormSubmit} />
 
-        {this.state.status === "done" && (
+        {status === "done" && (
           <>
-            <ImageGallery images={this.state.images} onModalOpen={this.findCurrentImage} />
+            <ImageGallery images={images} onModalOpen={this.findCurrentImage} />
             <LoadMoreBtn onLoadMore={this.loadMore} />
           </>
         )}
 
-        {this.state.status === "loading" && (<Loader />)}
+        {status === "loading" && (<Loader />)}
 
         {this.state.showModal && (
-          <Modal onClose={this.toggleModal}><img src={this.state.currentImage.largeImageURL} alt={this.state.currentImage.tags}
+          <Modal onClose={this.toggleModal}><img src={currentImage.largeImageURL} alt={currentImage.tags}
             style={{ width: "100%", height: "100%", objectFit: "cover" }} /></Modal>
         )}
       <GlobalStyle/>

@@ -17,8 +17,6 @@ export class Modal extends Component {
     }
 
     handleOverlayClck = e => {
-        // console.log(e.target);
-        // console.log(e.currentTarget);
         if (e.target === e.currentTarget) {
             this.props.onClose();
         }
