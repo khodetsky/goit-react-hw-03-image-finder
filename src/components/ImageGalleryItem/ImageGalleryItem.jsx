@@ -1,8 +1,8 @@
 import { GalleryItem, GalleryItemImage } from './ImageGalleryItem.styled';
 
-export const ImageGalleryItem = ({ picture, tags }) => {
+export const ImageGalleryItem = ({ picture, tags, onModalOpen }) => {
     return (
-        <GalleryItem>
+        <GalleryItem onClick={onModalOpen}>
             <GalleryItemImage src={picture} alt={tags} />
         </GalleryItem>
     );
