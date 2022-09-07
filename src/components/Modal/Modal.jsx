@@ -1,5 +1,6 @@
-import { Component } from 'react'
-import {ModalStyles, Overlay} from './Modal.styled'
+import { Component } from 'react';
+import { ModalStyles, Overlay } from './Modal.styled';
+import PropTypes from 'prop-types';
 
 export class Modal extends Component {
     componentDidMount() {
@@ -31,4 +32,9 @@ export class Modal extends Component {
             </Overlay>
         );
     }
+}
+
+Modal.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    children: PropTypes.any,
 }
